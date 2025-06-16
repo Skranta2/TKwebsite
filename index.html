@@ -1,16 +1,48 @@
 <<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tillman Konsult AB - Industrial Automation</title>
-    
-    <!-- Link to our Decoration Rulebook (Corrected Path) -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Link to icons for the services section -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="color-scheme" content="dark light">
+        <meta name="theme-color" content="#1a1a1a">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        
+        <title>Tillman Konsult AB - Industriell Automation</title>
+        
+        <!-- Preconnect to external resources -->
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+        <link rel="preconnect" href="https://flagcdn.com">
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="../images/favicon.png">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="../styles.css">
+        
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <script>
+        // Debug: Check image loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const img = document.querySelector('.app-card img');
+            if (img) {
+                console.log('Image source:', img.src);
+                console.log('Image natural size:', img.naturalWidth, 'x', img.naturalHeight);
+                console.log('Image display size:', img.offsetWidth, 'x', img.offsetHeight);
+                
+                // Force image size via JavaScript as last resort
+                img.style.width = '60px';
+                img.style.height = '60px';
+            }
+        });
+    </script>
 <body>
 
     <!-- Navigation Bar -->
@@ -112,33 +144,70 @@
     <h2>Our Apps</h2>
     <div class="apps-grid">
         <div class="app-card">
-            <i class="fas fa-calculator"></i>
+            <img src="/images/appstore.png" alt="App Icon" class="app-icon">
             <h3>Unit Converter AWG</h3>
-            <p>A powerful unit conversion tool with a special focus on electrical wire gauge conversions (AWG).</p>
-            <a href="en/app-details.html" class="cta-button">Learn More</a>
+            <p>Ett kraftfullt enhetsomvandlingsverktyg med särskilt fokus på omvandlingar för elektrisk kabelarea (AWG).</p>
+            <a href="app-details.html" class="cta-button">Läs mer</a>
         </div>
     </div>
 </section>
 
-        <!-- Contact Us Section -->
-        <section id="contact" class="container section-bg">
-            <h2>Contact Us</h2>
-            <p><strong>Note:</strong> To make this form work, you need to create a free account at <a href="https://formspree.io/" target="_blank">formspree.io</a> and replace "YOUR_FORM_ID" in the code with your own.</p>
-            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" rows="7" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
+        <!-- Contact Section -->
+<section id="contact" class="container" style="margin-top: 2rem;">
+    <div class="contact-info" style="background: var(--bg-secondary); padding: 2rem; border-radius: 8px; max-width: 600px; margin: 0 auto;">
+        <div class="contact-card" style="text-align: center;">
+            <h3 style="color: var(--accent-color); margin-bottom: 1.5rem; font-size: 1.5rem;">Contact Information</h3>
+            <p style="margin: 0.75rem 0; font-size: 1.1rem; line-height: 1.6;"><strong>Tillman Konsult AB</strong></p>
+            <p style="margin: 0.75rem 0; font-size: 1.1rem; line-height: 1.6;">Sannerudsgatan 11</p>
+            <p style="margin: 0.75rem 0; font-size: 1.1rem; line-height: 1.6;">66530 Kil, Sweden</p>
+            <p style="margin: 0.75rem 0; font-size: 1.1rem; line-height: 1.6;">
+                <a href="mailto:stefan@tillmankonsult.se" style="color: var(--accent-color); text-decoration: none; transition: color 0.3s ease;">stefan@tillmankonsult.se</a>
+            </p>
+        </div>
+    </div>
+</section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2025 Tillman Konsult AB. All rights reserved.</p>
+        <div class="visitor-counter">
+            <p>Visitors: <span id="visitor-count">Loading...</span></p>
+        </div>
     </footer>
 
     <!-- Link to our Magic JavaScript file (Corrected Path) -->
-    <script src="js/main.js"></script>
-</body>
+        <!-- Main JavaScript -->
+        <script src="js/main.js"></script>
+    
+        
+    <!-- Simple Visitor Counter -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const counterElement = document.getElementById('visitor-count');
+        if (!counterElement) return;
+        
+        try {
+            // Get current count from localStorage or initialize
+            let count = localStorage.getItem('siteVisitorCount');
+            count = count ? parseInt(count) : 0;
+            
+            // Increment count for new visits
+            const lastVisit = localStorage.getItem('lastVisit');
+            const today = new Date().toDateString();
+            
+            if (lastVisit !== today) {
+                count++;
+                localStorage.setItem('siteVisitorCount', count);
+                localStorage.setItem('lastVisit', today);
+            }
+            
+            counterElement.textContent = count.toLocaleString();
+        } catch (error) {
+            console.error('Error with visitor counter:', error);
+            counterElement.textContent = 'n/a';
+        }
+    });
+    </script>
+    </body>
 </html>
